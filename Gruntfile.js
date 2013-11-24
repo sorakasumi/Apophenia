@@ -28,6 +28,10 @@ module.exports = function (grunt) {
                 files: ['<%= yeoman.app %>/styles/{,*/}*.css'],
                 tasks: ['copy:styles', 'autoprefixer']
             },
+            handlebars: {
+                files: ['<%= yeoman.app %>/templates/{,*/}*.{hbs,handlebars}'],
+                tasks: ['handlebars:compile']
+            },
             livereload: {
                 options: {
                     livereload: '<%= connect.options.livereload %>'
@@ -95,6 +99,7 @@ module.exports = function (grunt) {
                 'Gruntfile.js',
                 '<%= yeoman.app %>/scripts/{,*/}*.js',
                 '!<%= yeoman.app %>/scripts/vendor/*',
+                '!<%= yeoman.app %>/scripts/templates.js',
                 'test/spec/{,*/}*.js'
             ]
         },
@@ -143,6 +148,20 @@ module.exports = function (grunt) {
                     src: '{,*/}*.css',
                     dest: '.tmp/styles/'
                 }]
+            }
+        },
+        handlebars: {
+            compile: {
+                options: {
+                    namespace: 'Handlebars',
+                    processName: function(filePath) {
+                        var pieces = filePath.split('/');
+                        return pieces[pieces.length - 1].replace('.handlebars', '');
+                    }
+                },
+                files: {
+                    '<%= yeoman.app %>/scripts/templates.js': '<%= yeoman.app %>/templates/*.handlebars'
+                }
             }
         },
         // not used since Uglify task does concat,
@@ -270,7 +289,6 @@ module.exports = function (grunt) {
         },
         modernizr: {
             devFile: '<%= yeoman.app %>/bower_components/modernizr/modernizr.js',
-            outputFile: '<%= yeoman.dist %>/bower_components/modernizr/modernizr.js',
             files: [
                 '<%= yeoman.dist %>/scripts/{,*/}*.js',
                 '<%= yeoman.dist %>/styles/{,*/}*.css',
