@@ -1,0 +1,11 @@
+{
+  "name": "apophenia",
+  "version": "0.0.0",
+  "dependencies": {
+    "modernizr": "~2.6.2",
+    "jquery": "~1.10.2"
+  },
+  "devDependencies": {
+    "normalize-css": "~2.1.3"
+  }
+}
