@@ -1,6 +1,8 @@
-<div class="entry" style="background: #{{ hex }}">
+<div class="entry" style="background: #{{ entry.hex }}">
+    <div class="before" style="background: linear-gradient(transparent, #F5E2D6);"></div>
+    <div class="after" style="background: linear-gradient(#F5E2D6, transparent);"></div>
 	<div class="absolute">
-		<h1>#{{ hex }}</h1>
-		<p>{{ definition }}</p>
+		<h1>#{{ entry.hex }}</h1>
+		<p>{{ entry.definition }}</p>
 	</div>
 </div>

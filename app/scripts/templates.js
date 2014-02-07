@@ -6,18 +6,12 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   var buffer = "", stack1, functionType="function", escapeExpression=this.escapeExpression;
 
 
-  buffer += "<div class=\"entry\" style=\"background: #";
-  if (stack1 = helpers.hex) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
-  else { stack1 = (depth0 && depth0.hex); stack1 = typeof stack1 === functionType ? stack1.call(depth0, {hash:{},data:data}) : stack1; }
-  buffer += escapeExpression(stack1)
-    + "\">\n	<div class=\"absolute\">\n		<h1>#";
-  if (stack1 = helpers.hex) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
-  else { stack1 = (depth0 && depth0.hex); stack1 = typeof stack1 === functionType ? stack1.call(depth0, {hash:{},data:data}) : stack1; }
-  buffer += escapeExpression(stack1)
-    + "</h1>\n		<p>";
-  if (stack1 = helpers.definition) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
-  else { stack1 = (depth0 && depth0.definition); stack1 = typeof stack1 === functionType ? stack1.call(depth0, {hash:{},data:data}) : stack1; }
-  buffer += escapeExpression(stack1)
-    + "</p>\n	</div>\n</div>";
+  buffer += "<div class=\"entry\" style=\"background: #"
+    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.entry)),stack1 == null || stack1 === false ? stack1 : stack1.hex)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "\">\n    <div class=\"before\" style=\"background: linear-gradient(transparent, #F5E2D6);\"></div>\n    <div class=\"after\" style=\"background: linear-gradient(#F5E2D6, transparent);\"></div>\n	<div class=\"absolute\">\n		<h1>#"
+    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.entry)),stack1 == null || stack1 === false ? stack1 : stack1.hex)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "</h1>\n		<p>"
+    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.entry)),stack1 == null || stack1 === false ? stack1 : stack1.definition)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "</p>\n	</div>\n</div>\n";
   return buffer;
   });
