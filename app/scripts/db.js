@@ -1,5 +1,3 @@
-
-
 var jobject = {
 	'entries': [
 		{ 'hex':'accede', 'definition':'agree to a demand, request, or treaty'},
@@ -40,3 +38,5 @@ var jobject = {
 		// { 'hex':'fee', 'definition':'' }
 	]
 };
+
+jobject.length();

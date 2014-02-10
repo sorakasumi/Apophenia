@@ -1,74 +1,75 @@
 /* global Handlebars, jobject */
 
-var hexList = {
+$(function() {
+    'use strict';
 
-    hexList: hexList,
+    var hexList = {
 
-    init: function () {
+        hexList: hexList,
 
-        var causeRepaintsOn = $("h1, h2, h3, p");
+        causeRepaintsOn: $('h1, h2, h3, p'),
 
-        $(window).resize(function() {
+        init: function () {
 
-            hexList.repaint();
+            $(window).resize(function() {
 
-        });
+                hexList.repaint();
 
-        hexList.build();
+            });
 
-    },
+            hexList.build();
 
-    build: function () {
+        },
 
-        for (var i = 0; i < jobject.entries.length; i++) {
+        build: function () {
+            var values, i;
 
-            var values = {entry: jobject.entries[i], nextEntry: jobject.entries[i+1]};
+            for (i = 0; i < jobject.entries.length; i++) {
 
-            $('body').append(Handlebars.entry(values));
+                values = {entry: jobject.entries[i], nextEntry: jobject.entries[i+1]};
 
-        }
-
-        $( window ).on('scroll', function (event) {
-
-            hexList.handleCurrent();
-
-        });
-
-        hexList.handleCurrent();
-
-    },
-
-    handleCurrent: function () {
-        var thing, location, height;
-
-        $('.entry').each( function () {
-
-            thing = $( this );
-
-            location = thing.position().top - $( window ).scrollTop();
-
-            height = $( window ).height() / 2;
-
-            if ( location < height && location > -height ) {
-
-                thing.children('.absolute').css('opacity','1');
-
-            } else {
-
-                thing.children('.absolute').css('opacity','0');
+                $('body').append(Handlebars.entry(values));
 
             }
 
-        });
-    },
+            $( window ).on('scroll', function () {
 
-    repaint: function () {
-        causeRepaintsOn.css('z-index', 1);
-    }
-};
+                hexList.handleCurrent();
 
-$(function() {
-	'use strict';
+            });
+
+            hexList.handleCurrent();
+
+        },
+
+        handleCurrent: function () {
+            var thing, location, height;
+
+            $('.entry').each( function () {
+
+                thing = $( this );
+
+                location = thing.position().top - $( window ).scrollTop();
+
+                height = $( window ).height() / 2;
+
+                if ( location < height && location > -height ) {
+
+                    thing.children('.absolute').css('opacity','1');
+
+                } else {
+
+                    thing.children('.absolute').css('opacity','0');
+
+                }
+
+            });
+        },
+
+        repaint: function () {
+            hexList.causeRepaintsOn.css('z-index', 1);
+        }
+    };
 
     hexList.init();
 
