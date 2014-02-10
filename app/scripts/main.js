@@ -26,14 +26,43 @@ var myObject = {
     build: function () {
 
         for (var i = 0; i < jobject.entries.length; i++) {
-            var cheese = myObject.hexToRgb(jobject.entries[i].hex);
-            console.log(cheese);
+            // var cheese = myObject.hexToRgb(jobject.entries[i].hex);
+            // console.log(cheese);
 
-            var values = {entry: jobject.entries[i], prevEntry: jobject.entries[i-1]};
+            var values = {entry: jobject.entries[i], nextEntry: jobject.entries[i+1], iter: 3*(10 - i), iter2: -3*(10 - i)};
             $('body').append(Handlebars.entry(values));
 
         }
 
+        $( window ).on('scroll', function (event) {
+
+            myObject.handleCurrent();
+
+        });
+
+        myObject.handleCurrent();
+
+    },
+
+    handleCurrent: function () {
+
+        $('.entry').each( function () {
+
+            var thing = $( this );
+
+            var location = thing.position().top - $( window ).scrollTop();
+
+            if ( location < ($( window ).height() / 2) && location > -($( window ).height() / 2) ) {
+
+                thing.children('.absolute').css('opacity','1');
+
+            } else {
+
+                thing.children('.absolute').css('opacity','0');
+
+            }
+
+        });
     },
 
     hexToRgb: function (hex) {
@@ -43,6 +72,11 @@ var myObject = {
         var b = bigint & 255;
 
         return r + ',' + g + ',' + b;
+    },
+
+    getMidPoint: function (hex1, hex2) {
+
+
     },
 
     repaint: function () {

@@ -1,8 +1,15 @@
-<div class="entry" style="background: #{{ entry.hex }}">
-    <div class="before" style="background: linear-gradient(transparent, #F5E2D6);"></div>
-    <div class="after" style="background: linear-gradient(#F5E2D6, transparent);"></div>
-	<div class="absolute">
-		<h1>#{{ entry.hex }}</h1>
-		<p>{{ entry.definition }}</p>
-	</div>
+<div class="entry" style="background: #{{ entry.hex }};" id=>
+<!-- <div class="entry" style="background: #{{ entry.hex }}; z-index: {{ iter }}"> -->
+    <!-- <div class="before" style="background: linear-gradient(transparent, #F5E2D6);"></div> -->
+    <!-- <div class="after" style="background: linear-gradient(#F5E2D6, transparent);"></div> -->
+    <div class="absolute">
+    <!-- <div class="absolute" style="background:#{{ entry.hex }}; -webkit-transform: translate({{ iter }}px,{{ iter }}px);"> -->
+    <!-- <div class="absolute" style="background:#{{ entry.hex }}; z-index: {{ iter2 }}; -webkit-transform: translate({{ iter }}px,{{ iter }}px);"> -->
+    <!-- <div class="absolute" style="background:#{{ entry.hex }}; z-index: 5; -webkit-transform: translate({{ iter }}px,{{ iter }}px);"> -->
+    <!-- <div class="absolute" style="background:#{{ entry.hex }}; -webkit-transform: translate({{ iter }}px,{{ iter }}px);"> -->
+        <h1>#{{ entry.hex }}</h1>
+        <p>{{ entry.definition }}</p>
+    </div>
+    <div class="gradient" style="background: linear-gradient(#{{ entry.hex }}, #{{ nextEntry.hex }});"></div>
+    <!-- <div class="gradient" style="background: linear-gradient(#{{ nextEntry.hex }}, #{{ entry.hex }});"></div> -->
 </div>
