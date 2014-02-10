@@ -165,17 +165,6 @@ module.exports = function (grunt) {
                 }
             }
         },
-        // not used since Uglify task does concat,
-        // but still available if needed
-        /*concat: {
-            dist: {}
-        },*/
-        // not enabled since usemin task does concat and uglify
-        // check index.html to edit your build targets
-        // enable this task if you prefer defining your build targets here
-        /*uglify: {
-            dist: {}
-        },*/
         'bower-install': {
             app: {
                 html: '<%= yeoman.app %>/index.html',
@@ -227,22 +216,6 @@ module.exports = function (grunt) {
                 }]
             }
         },
-        cssmin: {
-            // This task is pre-configured if you do not wish to use Usemin
-            // blocks for your CSS. By default, the Usemin block from your
-            // `index.html` will take care of minification, e.g.
-            //
-            //     <!-- build:css({.tmp,app}) styles/main.css -->
-            //
-            // dist: {
-            //     files: {
-            //         '<%= yeoman.dist %>/styles/main.css': [
-            //             '.tmp/styles/{,*/}*.css',
-            //             '<%= yeoman.app %>/styles/{,*/}*.css'
-            //         ]
-            //     }
-            // }
-        },
         htmlmin: {
             dist: {
                 options: {
@@ -286,16 +259,27 @@ module.exports = function (grunt) {
                 cwd: '<%= yeoman.app %>/styles',
                 dest: '.tmp/styles/',
                 src: '{,*/}*.css'
+            },
+            normalize: {
+                expand: true,
+                dot: true,
+                cwd: '<%= yeoman.app %>/bower_components/normalize-css/',
+                dest: '.tmp/bower_components/normalize-css/',
+                src: 'normalize.css'
             }
         },
         modernizr: {
-            devFile: '<%= yeoman.app %>/bower_components/modernizr/modernizr.js',
-            files: [
-                '<%= yeoman.dist %>/scripts/{,*/}*.js',
-                '<%= yeoman.dist %>/styles/{,*/}*.css',
-                '!<%= yeoman.dist %>/scripts/vendor/*'
-            ],
-            uglify: true
+            dist: {
+                devFile: '<%= yeoman.app %>/bower_components/modernizr/modernizr.js',
+                outputFile : '<%= yeoman.app %>/scripts/modernizr.js',
+                files: {
+                    src: [
+                        '!<%= yeoman.app %>/scripts/modernizr.js',
+                        '<%= yeoman.app %>/scripts/{,*/}*.js',
+                        '<%= yeoman.app %>/styles/{,*/}*.css'
+                    ],
+                },
+            },
         },
         concurrent: {
             server: [
@@ -308,6 +292,7 @@ module.exports = function (grunt) {
             dist: [
                 'compass',
                 'copy:styles',
+                'copy:normalize',
                 'imagemin',
                 'svgmin',
                 'htmlmin'
@@ -344,13 +329,13 @@ module.exports = function (grunt) {
 
     grunt.registerTask('build', [
         'clean:dist',
+        'modernizr',
         'useminPrepare',
         'concurrent:dist',
         'autoprefixer',
         'concat',
         'cssmin',
         'uglify',
-        'modernizr',
         'copy:dist',
         'rev',
         'usemin'
