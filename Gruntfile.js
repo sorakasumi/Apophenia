@@ -304,7 +304,14 @@ module.exports = function (grunt) {
                 cwd: '<%= config.app %>/styles',
                 dest: '.tmp/styles/',
                 src: '{,*/}*.css'
-            }
+            },
+            normalize: {
+                expand: true,
+                dot: true,
+                cwd: '<%= config.app %>/bower_components/normalize-css/',
+                dest: '.tmp/bower_components/normalize-css/',
+                src: 'normalize.css'
+            },
         },
 
         // Generates a custom Modernizr build that includes only the tests you
@@ -351,6 +358,7 @@ module.exports = function (grunt) {
             dist: [
                 'sass',
                 'copy:styles',
+                'copy:normalize',
                 'imagemin',
                 'svgmin'
             ]
