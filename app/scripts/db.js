@@ -39,4 +39,6 @@ var jobject = {
 	]
 };
 
-// jobject.length();
+if (jobject) {
+    // lol
+}
