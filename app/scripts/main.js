@@ -67,7 +67,7 @@ $(function() {
         },
 
         repaint: function () {
-            hexList.causeRepaintsOn.css('z-index', 1);
+            hexList.causeRepaintsOn.css('z-index', 20);
         }
     };
 
