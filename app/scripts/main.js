@@ -55,11 +55,11 @@ $(function() {
 
                 if ( location < height && location > -height ) {
 
-                    thing.children('.absolute').css('opacity','1');
+                    thing.children('.absolute').addClass('active');
 
                 } else {
 
-                    thing.children('.absolute').css('opacity','0');
+                    thing.children('.absolute').removeClass('active');
 
                 }
 
@@ -67,7 +67,7 @@ $(function() {
         },
 
         repaint: function () {
-            hexList.causeRepaintsOn.css('z-index', 1);
+            hexList.causeRepaintsOn.css('z-index', 20);
         }
     };
 
