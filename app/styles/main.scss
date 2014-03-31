@@ -8,63 +8,14 @@ body {
     height: 100%;
 }
 
-.entry {
-    box-sizing: border-box;
-    width: 100%;
-    height: 100%;
-    position: relative;
+canvas { width: 100%; height: 100% }
 
-    h1 {
-        font-size: 14vw;
-        line-height: 14vw;
-        margin-top: 0px;
-        margin-bottom: 2%;
-    }
-
-    p {
-        margin: 1%;
-        font-size: 2vw;
-    }
-
-    .gradient {
-        position: absolute;
-        // background: linear-gradient(transparent, red);
-        width: 100%;
-        height: 40%;
-        bottom: -20%;
-        z-index: 1;
-    }
-
-    &:first-child {
-        .absolute {
-            opacity: 1;
-        }
-    }
-
-    &:last-child {
-        .gradient {
-            display: none;
-        }
-    }
-}
-
-.absolute {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    margin: auto;
-    max-height: 15%;
-    max-width: 60%;
-    transition: opacity 0.3s;
-    opacity: 0;
-    // display: table;
-    z-index: 20;
-
-    &.active {
-        opacity: 1;
-    }
+.hex {
+    border: 2px solid white;
+    height: 50px;
+    width: 50px;
+    margin: 15px;
+    float: left;
 }
 
 .browsehappy {

@@ -1,76 +1,58 @@
-/* global Handlebars, jobject */
+/* global jobject */
 
 $(function() {
     'use strict';
 
     var hexList = {
 
-        hexList: hexList,
-
-        causeRepaintsOn: $('h1, h2, h3, p'),
-
         init: function () {
 
-            $(window).resize(function() {
-
-                hexList.repaint();
-
-            });
-
             hexList.build();
+            hexList.setListners();
 
         },
 
         build: function () {
-            var values, i;
+            var i, theHex;
 
             for (i = 0; i < jobject.entries.length; i++) {
 
-                values = {entry: jobject.entries[i], nextEntry: jobject.entries[i+1]};
+                theHex = jobject.entries[i].hex;
 
-                $('body').append(Handlebars.entry(values));
+                $( '<div>').addClass('hex').data('hex', theHex).css('background-color', '#' + theHex).appendTo( 'body' );
 
             }
 
-            $( window ).on('scroll', function () {
+        },
 
-                hexList.handleCurrent();
+        setListners: function () {
+            var hex;
+
+            $('.hex').on('mouseenter', function () {
+
+                hex = $(this).data('hex');
+
+                $('body').css('background', '#' + hex);
 
             });
 
-            hexList.handleCurrent();
-
         },
 
-        handleCurrent: function () {
-            var thing, location, height;
-
-            $('.entry').each( function () {
-
-                thing = $( this );
-
-                location = thing.position().top - $( window ).scrollTop();
-
-                height = $( window ).height() / 2;
-
-                if ( location < height && location > -height ) {
-
-                    thing.children('.absolute').addClass('active');
-
-                } else {
-
-                    thing.children('.absolute').removeClass('active');
-
-                }
-
-            });
-        },
-
-        repaint: function () {
-            hexList.causeRepaintsOn.css('z-index', 20);
-        }
     };
 
     hexList.init();
+
+    // var thing = {
+    //     colour: '',
+    //     method: function () {
+    //         console.log(this.colour);
+    //     }
+    // };
+
+    // var thing1 = $.extend({}, thing);
+
+    // thing1.colour = 'red';
+
+    // thing1.method();
 
 });
