@@ -13,14 +13,15 @@ $(function() {
         },
 
         build: function () {
-            var i, theHex;
+            var i;
 
             for (i = 0; i < jobject.entries.length; i++) {
 
-                theHex = jobject.entries[i].hex;
+                // theHex = jobject.entries[i].hex;
 
-                $('<div>').addClass('hex').data('hex', theHex).css('background-color', '#' + theHex).appendTo( 'body' );
+                // $('<div>').addClass('hex').data('hex', theHex).css('background-color', '#' + theHex).appendTo( 'body' );
 
+                $('body').append(Handlebars.hex(jobject.entries[i]));
                 $('.main').append(Handlebars.entry(jobject.entries[i]));
 
             }
