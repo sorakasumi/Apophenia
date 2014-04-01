@@ -1,4 +1,4 @@
-/* global jobject */
+/* global jobject, Handlebars */
 
 $(function() {
     'use strict';
@@ -19,7 +19,9 @@ $(function() {
 
                 theHex = jobject.entries[i].hex;
 
-                $( '<div>').addClass('hex').data('hex', theHex).css('background-color', '#' + theHex).appendTo( 'body' );
+                $('<div>').addClass('hex').data('hex', theHex).css('background-color', '#' + theHex).appendTo( 'body' );
+
+                $('.main').append(Handlebars.entry(jobject.entries[i]));
 
             }
 
@@ -33,6 +35,8 @@ $(function() {
                 hex = $(this).data('hex');
 
                 $('body').css('background', '#' + hex);
+                $('.entry').hide();
+                $('.entry[data-hex=' + hex + ']').show();
 
             });
 
