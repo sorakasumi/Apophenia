@@ -39,6 +39,28 @@ $(function() {
                 $('.entry').hide();
                 $('.entry[data-hex=' + hex + ']').show();
 
+                if ($(this).hasClass('half')) {
+
+                    console.log('yep');
+
+                }
+
+            });
+
+            $('.filter').on('change', function () {
+
+                // console.log($(this).data('kind'));
+                if ($(this).prop('checked')) {
+
+                    $('.' + $(this).data('kind')).show();
+
+                } else {
+
+                    $('.' + $(this).data('kind')).hide();
+
+                }
+
+
             });
 
         },
