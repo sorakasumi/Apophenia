@@ -1,37 +1,56 @@
+/* global Path, Point */
 
-var hexPaper = {
+$(function() {
+    'use strict';
 
-    init: function () {
-        var i, i2;
+    var hexagon = {
 
-        for(i = 0; i < 10; i++) {
+        radius: 50,
 
-            for(i2 = 0; i2 < 10; i2++) {
+        sides: 6,
 
-                var hex = $.extend({}, hexagon);
+        x: 0,
 
-                hex.init(i,i2);
+        y: 0,
 
+        init: function () {
+
+            this.draw();
+
+        },
+
+        draw: function () {
+
+            var hex = new Path.RegularPolygon(new Point(this.x, this.y), this.sides, this.radius);
+
+            hex.strokeColor = 'black';
+
+        },
+
+    };
+
+    var hexPaper = {
+
+        init: function () {
+            var i, i2, hex;
+
+            for(i = 0; i < 10; i++) {
+
+                for(i2 = 0; i2 < 10; i2++) {
+
+                    hex = $.extend({}, hexagon, {x:(i2+1)*100,y:(i+1)*110});
+
+                    hex.init();
+
+                }
             }
-        }
-    },
 
-}
+            console.log(hexagon.x);
+        },
 
-var hexagon = {
+    };
 
-    radius: 50,
 
-    sides: 6,
+    hexPaper.init();
 
-    init: function (i, i2) {
-
-        var hex = new Path.RegularPolygon(new Point((i2+1)*100,(i+1)*100), 6, radius);
-
-        hex.fillColor = 'black';
-
-    },
-
-}
-
-hexPaper.init();
+});
