@@ -41,7 +41,7 @@ $(function() {
 
                 if ($(this).hasClass('half')) {
 
-                    console.log('yep');
+                    // console.log('yep');
 
                 }
 
@@ -67,7 +67,7 @@ $(function() {
 
     };
 
-    hexList.init();
+    // hexList.init();
 
     // var thing = {
     //     colour: '',
