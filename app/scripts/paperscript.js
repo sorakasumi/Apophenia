@@ -1,7 +1,10 @@
 /* global Path, Point, Size, view, Group */
 
-$(function() {
-    'use strict';
+// $(function() {
+    // 'use strict';
+
+var isReady = false;
+
 
     var hexagon = {
 
@@ -42,19 +45,21 @@ $(function() {
 
         test: false,
 
+        animno: 0,
+
         init: function () {
 
-            if (this.test) {
+            // if (this.test) {
 
-                var testSize = new Size(500, 300);
-                this.build(testSize);
-                this.buildTest(testSize);
+            //     var testSize = new Size(500, 300);
+            //     this.build(testSize);
+            //     this.buildTest(testSize);
 
-            } else {
+            // } else {
 
                 this.build(view.size);
 
-            }
+            // }
 
         },
 
@@ -97,27 +102,31 @@ $(function() {
 
             this.hexGroup.rotate(this.rotate);
 
-            // this.cleanJunk(screenSize);
 
+            this.cleanJunk();
+
+            isReady = true;
         },
 
-        cleanJunk: function (screenSize) {
-            var i, hex, hexList, pos;
+        cleanJunk: function () {
+            var i, pos, bounds, buffer, hexlist, deletes = [];
 
-            var deletes = [];
-            var bounds = view.bounds;
             hexList = this.hexGroup.children;
+            buffer = (this.test) ? this.radius: -this.radius ;
+            bounds = view.bounds;
 
-            for (i = 0; i < hexes.length; i++) {
+            for (i = 0; i < hexList.length; i++) {
+
                 pos = hexList[i].position;
 
-                if (pos.x < 0 - this.radius || pos.x > bounds.width + this.radius || pos.y < 0 - this.radius || pos.y > bounds.height + this.radius) {
+                if (pos.x > bounds.width - buffer || pos.y > bounds.height - buffer || pos.y < 0 + buffer || pos.x < 0 + buffer) {
 
                     deletes.push(hexList[i]);
 
                 }
 
             }
+
             for (i = 0; i < deletes.length; i++) {
                 deletes[i].remove();
 
@@ -140,6 +149,22 @@ $(function() {
 
         },
 
+        animTest: function () {
+            // console.log('hello');
+
+            if (this.animno < this.hexGroup.children.length) {
+
+                this.hexGroup.children[this.animno].fillColor = 'red';
+                this.animno++;
+
+            } else {
+
+                isReady = false;
+            }
+            // console.log(this.hexGroup);
+
+        }
+
     };
 
 
@@ -151,4 +176,15 @@ $(function() {
 
     }
 
-});
+// });
+
+
+function onFrame(event) {
+
+    if (isReady){
+
+        hexPaper.animTest();
+
+    }
+}
+
