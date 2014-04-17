@@ -1,10 +1,9 @@
-/* global Path, Point, Size, view, Group */
-
-// $(function() {
-    // 'use strict';
+/* global Path, Point, Size, view, Group, Rectangle */
 
 var isReady = false;
 
+$(function() {
+    'use strict';
 
     var hexagon = {
 
@@ -49,17 +48,17 @@ var isReady = false;
 
         init: function () {
 
-            // if (this.test) {
+            if (this.test === 'mini') {
 
-            //     var testSize = new Size(500, 300);
-            //     this.build(testSize);
-            //     this.buildTest(testSize);
+                var testSize = new Size(500, 300);
+                this.build(testSize);
+                this.buildTest(testSize);
 
-            // } else {
+            } else {
 
                 this.build(view.size);
 
-            // }
+            }
 
         },
 
@@ -109,7 +108,7 @@ var isReady = false;
         },
 
         cleanJunk: function () {
-            var i, pos, bounds, buffer, hexlist, deletes = [];
+            var i, pos, bounds, buffer, hexList, deletes = [];
 
             hexList = this.hexGroup.children;
             buffer = (this.test) ? this.radius: -this.radius ;
@@ -154,14 +153,16 @@ var isReady = false;
 
             if (this.animno < this.hexGroup.children.length) {
 
-                this.hexGroup.children[this.animno].fillColor = 'red';
+                this.hexGroup.children[this.animno].strokeColor = 'white';
                 this.animno++;
 
             } else {
 
                 isReady = false;
             }
-            // console.log(this.hexGroup);
+            // console.log(this.hexGroup);\
+
+
 
         }
 
@@ -176,15 +177,17 @@ var isReady = false;
 
     }
 
-// });
+});
 
 
-function onFrame(event) {
+function onFrame() {
+    'use strict';
 
     if (isReady){
 
-        hexPaper.animTest();
+        $.hexPaper.animTest();
 
     }
+
 }
 
