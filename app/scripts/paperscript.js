@@ -23,8 +23,7 @@ $(function() {
 
             var hex = new Path.RegularPolygon( this.point, this.sides, this.radius );
 
-            hex.fillColor = '#b4d455';
-            // hex.strokeColor = 'lightgrey';
+            hex.fillColor = 'rgba(0,0,0,0.03)';
 
             hexPaper.hexGroup.addChild(hex);
 
@@ -168,7 +167,6 @@ $(function() {
 
     };
 
-
     hexPaper.init();
 
     function pythagAB (size) {
@@ -180,14 +178,14 @@ $(function() {
 });
 
 
-function onFrame() {
-    'use strict';
+// function onFrame() {
+//     'use strict';
 
-    if (isReady){
+//     if (isReady){
 
-        $.hexPaper.animTest();
+//         hexPaper.animTest();
 
-    }
+//     }
 
-}
+// }
 
