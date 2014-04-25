@@ -1,24 +1,33 @@
 'use strict';
 
 angular
-    .module('yoAngularApp', [
-        'ngCookies',
-        'ngResource',
-        'ngSanitize',
+    .module('hexApp', [
         'ngRoute',
+        'hexControls',
         'ngAnimate'
     ])
-    .config(function ($routeProvider) {
-        $routeProvider
-            .when('/', {
+    .config(function($routeProvider) {
+
+        $routeProvider.
+
+            when('/:urlHex', {
+
                 templateUrl: 'views/main.html',
-                controller: 'MainCtrl'
-            })
-            .when('/cheese', {
-                templateUrl: 'views/other.html',
-                controller: 'MainCtrl'
-            })
-            .otherwise({
+                controller: 'hexListCtrl'
+
+            }).
+
+            when('/', {
+
+                templateUrl: 'views/main.html',
+                controller: 'hexListCtrl'
+
+            }).
+
+            otherwise({
+
                 redirectTo: '/'
+
             });
-    });
+
+        });

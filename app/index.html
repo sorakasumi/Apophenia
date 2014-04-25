@@ -2,30 +2,28 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" ng-app="hexApp"> <!--<![endif]-->
     <head>
         <meta charset="utf-8">
         <title>Hexadecimal Lexicography</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
-        <link rel="shortcut icon" href="/favicon.ico">
-        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <link rel="icon" type="image/png" href="images/favicon.png">
         <!-- build:css(.tmp) styles/main.css -->
-        <link rel="stylesheet" href="bower_components/normalize-css/normalize.css" />
-        <link rel="stylesheet" href="styles/main.css">
+            <link rel="stylesheet" href="bower_components/normalize-css/normalize.css" />
+            <link rel="stylesheet" href="styles/main.css">
         <!-- endbuild -->
         <!-- build:js scripts/modernizr.js -->
-        <script src="bower_components/modernizr/modernizr.js"></script>
-        <!-- endbuild -->
-        <!-- build:js scripts/head.js -->
-        <link rel="icon" type="image/png" href="images/favicon.png">
-        <!-- // <script src="bower_components/paper/dist/paper-full.js"></script> -->
+            <script src="bower_components/modernizr/modernizr.js"></script>
         <!-- endbuild -->
     </head>
     <body>
+
+        <div ng-view class="view" style="background-color:#{{ currentHex }}"></div>
+
         <!-- <canvas id="myCanvas" resize></canvas> -->
 
-        <label for="legit"><input class="filter" type="checkbox" id="legit" data-kind="legit" checked>legit</label>
+<!--         <label for="legit"><input class="filter" type="checkbox" id="legit" data-kind="legit" checked>legit</label>
         <label for="leet"><input class="filter" type="checkbox" id="leet" data-kind="leet" checked>leet</label>
         <label for="half"><input class="filter" type="checkbox" id="half" data-kind="half" checked>half</label>
         <div class="main">
@@ -33,7 +31,8 @@
                 <h1>Hexadecimal Lexicography</h1>
                 <h3>The emergent meanings of base 16 colour codes</h3>
             </div>
-        </div>
+
+        </div> -->
         <!--[if lt IE 10]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
@@ -42,9 +41,13 @@
 
         <!-- build:js scripts/vendor.js -->
         <!-- bower:js -->
+        <script src="bower_components/jquery/dist/jquery.js"></script>
+        <script src="bower_components/threejs/build/three.js"></script>
+        <script src="bower_components/paper/dist/paper-full.js"></script>
         <script src="bower_components/angular/angular.js"></script>
         <script src="bower_components/angular-resource/angular-resource.js"></script>
         <script src="bower_components/angular-route/angular-route.js"></script>
+        <script src="bower_components/angular-animate/angular-animate.js"></script>
         <!-- endbower -->
         <!-- endbuild -->
 
@@ -59,8 +62,9 @@
         </script>
 
         <!-- build:js({app,.tmp}) scripts/main.js -->
-        <script src="bower_components/jquery/dist/jquery.js"></script>
         <script src="scripts/db.js"></script>
+        <script src="scripts/app.js"></script>
+        <script src="scripts/controllers/main.js"></script>
         <!-- // <script src="scripts/main.js"></script> -->
         <!-- <script src="scripts/paperscript.js" type="text/paperscript" canvas="myCanvas"></script> -->
         <!-- endbuild -->
