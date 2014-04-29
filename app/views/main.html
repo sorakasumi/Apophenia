@@ -1,4 +1,9 @@
-<input ng-model="query.hex" id="query">
+<div>
+    <input ng-model="query.hex" id="query">
+    <label for="legit"><input ng-model="kinds.legit" type="checkbox">legit</label>
+    <label for="half"><input ng-model="kinds.half" type="checkbox">half</label>
+    <label for="leet"><input ng-model="kinds.leet" type="checkbox">leet</label>
+</div>
 <div class="main">
     <div class="entry" data-hex="{{ colour.hex }}" data-kind="{{ colour.kind }}">
         <h1>{{ '#' + colour.hex }}</h1>
@@ -11,6 +16,7 @@
 </div>
 
 <div class="hex {{ colour.kind }}"
+    ng-repeat="colour in colours | filter:query | kindfilter:kinds"
     ng-mouseenter="showDetails(colour)"
     data-hex="{{ colour.hex }}"
     style="background-color:#{{ colour.hex }}">

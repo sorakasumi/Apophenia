@@ -38,5 +38,5 @@
 
     { "hex": "b4d455", "kind": "leet", "definition": "One badass mutha fucka" },
 
-    { "hex": "455", "kind": "half leet", "definition": " " }
+    { "hex": "455", "kind": ["half","leet"], "definition": " " }
 ]
