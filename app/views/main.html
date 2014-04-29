@@ -1,15 +1,17 @@
 <input ng-model="query.hex" id="query">
 <div class="main">
-    <div ng-repeat="colour in colours" class="entry" data-hex="{{ colour.hex }}" data-kind="{{ colour.kind }}">
-        <h1>#{{ colour.hex }}</h1>
-        <p>{{ index }}</p>
+    <div class="entry" data-hex="{{ colour.hex }}" data-kind="{{ colour.kind }}">
+        <h1>{{ '#' + colour.hex }}</h1>
         <p>{{ colour.definition }}</p>
     </div>
-    <div>
-        <h1>x</h1>
+    <!-- <div> -->
         <!-- <h1>Hexadecimal Lexicography</h1> -->
         <!-- <h3>The emergent meanings of base 16 colour codes</h3> -->
-    </div>
+    <!-- </div>  -->
 </div>
 
-<div ng-repeat="colour in colours | filter:query" ng-mouseenter="showDetails(colour.hex)" class="hex {{ colour.kind }}" data-hex="{{ colour.hex }}" style="background-color:#{{ colour.hex }}"></div>
+<div class="hex {{ colour.kind }}"
+    ng-mouseenter="showDetails(colour)"
+    data-hex="{{ colour.hex }}"
+    style="background-color:#{{ colour.hex }}">
+</div>

@@ -12,22 +12,23 @@ angular.module('hexControls', [])
 
             });
 
+            $scope.colour = { };
+
             if ($routeParams.urlHex) {
 
-                $scope.currentHex = $routeParams.urlHex;
+                $scope.colour.hex = $routeParams.urlHex;
 
-                $('.entry[data-hex=' + $scope.currentHex + ']').show();
+            }
+
+            $scope.showDetails = function(colour) {
+
+                $scope.colour = colour;
 
             }
 
 
-            $scope.showDetails = function(hex) {
 
-                $scope.currentHex = hex;
 
-                $('.entry').hide();
-                $('.entry[data-hex=' + hex + ']').show();
 
-            }
 
         });
