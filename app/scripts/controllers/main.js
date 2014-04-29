@@ -24,7 +24,7 @@ angular.module('hexControls', [])
 
                 $scope.colour = colour;
 
-            }
+            };
 
         })
 
@@ -34,7 +34,7 @@ angular.module('hexControls', [])
 
             // filter takes (input, arguments)
 
-            return function(colours, filterKinds) {
+            return function (colours, filterKinds) {
 
                 if (filterKinds) {
                     var kinds, out = [];
@@ -64,6 +64,22 @@ angular.module('hexControls', [])
                     }
 
                     return out;
+
+                }
+
+            };
+
+        })
+
+    .filter('enhash',
+
+        function () {
+
+            return function (item) {
+
+                if (item) {
+
+                    return '#' + item;
 
                 }
 

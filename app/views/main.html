@@ -1,13 +1,13 @@
 <div>
     <input ng-model="query.hex" id="query">
-    <label for="legit"><input ng-model="kinds.legit" type="checkbox">legit</label>
-    <label for="half"><input ng-model="kinds.half" type="checkbox">half</label>
-    <label for="leet"><input ng-model="kinds.leet" type="checkbox">leet</label>
+    <label for="legit"><input ng-model="kinds.legit" id="legit" type="checkbox">legit</label>
+    <label for="half"><input ng-model="kinds.half" id="half" type="checkbox">half</label>
+    <label for="leet"><input ng-model="kinds.leet" id="leet" type="checkbox">leet</label>
 </div>
 <div class="main">
     <div class="entry" data-hex="{{ colour.hex }}" data-kind="{{ colour.kind }}">
-        <h1>{{ '#' + colour.hex }}</h1>
-        <p>{{ colour.definition }}</p>
+        <h1>{{ (colour.hex | enhash ) || "Hexadecimal Lexicography" }}</h1>
+        <h3>{{ colour.definition || "The emergent meanings of base 16 colour codes" }}</h3>
     </div>
     <!-- <div> -->
         <!-- <h1>Hexadecimal Lexicography</h1> -->
